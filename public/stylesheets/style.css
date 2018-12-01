@@ -1,8 +1,56 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 13px !important;
+  font-family: Roboto, Arial, sans-serif !important;
+  font-weight: bold;
 }
 
 a {
   color: #00B7FF;
+}
+
+.jumbotron.hacker-news {
+  background-color: rgb(51,51,51);
+  border-radius: 0px;
+  margin-bottom: 10px;
+}
+
+.jumbotron.hacker-news > h1,h2,h3,h4,h5,p,span {
+  color: #FFFFFF !important;
+}
+
+table.hacker-news {
+  margin: 0 20px;
+  width: -webkit-fill-available;
+}
+
+table.hacker-news > tbody > tr:hover {
+  background-color: #fafafa;
+}
+
+table.hacker-news > tbody > tr > td {
+  border-top: none !important;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+table.hacker-news > tbody > tr > td > b.author{
+  color: #999;
+}
+
+table.hacker-news > tbody > tr > td > b.title,b.date{
+  color: #333;
+}
+
+
+/* SCROLL BAR */
+body::-webkit-scrollbar {
+  width: 6px;
+  background: rgb(194, 194, 194);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(44, 62, 80,0.5);
+  outline: 1px solid slategrey;
+  border-radius: 5px;
 }

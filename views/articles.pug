@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    table.table.table-hover.hacker-news
+        tbody
+            each val in articles
+                if val.story_title
+                    tr(onclick= val.story_url ? 'window.open(\''+val.story_url+'\')' : 'window.open(\''+val.url+'\')')
+                        td
+                            b.title= val.story_title
+                            b.author= ' - ' + val.author + ' - '
+                        td
+                            b.date= moment(val.created_at).calendar()
+                else if val.title
+                    tr(onclick= val.story_url ? 'window.open(\''+val.story_url+'\')' : 'window.open(\''+val.url+'\')')
+                        td
+                            b.title= val.title
+                            b.author= ' - ' + val.author + ' - '
+                        td.title
+                            b.date= moment(val.created_at).calendar()

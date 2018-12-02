@@ -92,11 +92,11 @@ setInterval(() => {
         let apiArticles = JSON.parse(body)["hits"];
         console.log(`${new Date().toString()} => Data fetched successfully`);
         console.log(`${new Date().toString()} => Connecting to database...`);
-        const client = new MongoClient(`mongodb+srv://${user}:${password}@${server}`, {useNewUrlParser: true});
+        const client = new MongoClient(`mongodb+srv://${credentials.user}:${credentials.password}@${credentials.server}`, {useNewUrlParser: true});
         client.connect().then(() => {
             console.log(`${new Date().toString()} => Connected successfully to database server`);
 
-            const db = client.db(database);
+            const db = client.db(credentials.database);
 
             const collection = db.collection('articles');
 

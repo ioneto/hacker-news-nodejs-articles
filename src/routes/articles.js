@@ -1,23 +1,19 @@
 let express = require('express');
 let router = express.Router();
 let MongoClient = require('mongodb').MongoClient;
-
-const server = 'hacker-news-articles-m8qvj.gcp.mongodb.net';
-const database = 'hacker-news-articles';
-const user = 'default';
-const password = '6Ah2pzb2oVid7Vyl';
+let credentials = require('../config/db.config');
 
 /**
  * Method that displays the main view of the application (list of 20 most recent nodejs articles from hacker news)
  */
 router.get('/', function(req, res) {
     console.log(`${new Date().toString()} => Connecting to database...`);
-    let client = new MongoClient(`mongodb+srv://${user}:${password}@${server}`,{ useNewUrlParser: true });
+    let client = new MongoClient(`mongodb+srv://${credentials.user}:${credentials.password}@${credentials.server}`,{ useNewUrlParser: true });
 
     client.connect().then(() => {
         console.log(`${new Date().toString()} => Connected successfully to database server`);
 
-        let db = client.db(database);
+        let db = client.db(credentials.database);
 
         let collection = db.collection('articles');
 
@@ -41,12 +37,12 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
     let objectID = req.body.objectID;
     console.log(`${new Date().toString()} => Connecting to database...`);
-    let client = new MongoClient(`mongodb+srv://${user}:${password}@${server}`,{ useNewUrlParser: true });
+    let client = new MongoClient(`mongodb+srv://${credentials.user}:${credentials.password}@${credentials.server}`,{ useNewUrlParser: true });
 
     client.connect().then(() => {
         console.log(`${new Date().toString()} => Connected successfully to database server`);
 
-        let db = client.db(database);
+        let db = client.db(credentials.database);
 
         let collection = db.collection('articles');
 

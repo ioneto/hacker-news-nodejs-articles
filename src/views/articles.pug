@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    div#list
+        table.table.table-hover.hacker-news
+            tbody
+                each val in articles
+                    if val.story_title
+                        tr
+                            td(onclick= val.story_url ? 'window.open(\''+val.story_url+'\')' : 'window.open(\''+val.url+'\')')
+                                b.title= val.story_title
+                                b.author= ' - ' + val.author + ' - '
+                            td(onclick= val.story_url ? 'window.open(\''+val.story_url+'\')' : 'window.open(\''+val.url+'\')')
+                                b.date= moment(val.created_at).calendar()
+                            td
+                                form(method='POST' action='/articles#list')
+                                    input(name='objectID',value=val.objectID,type='hidden')
+                                    button.icon-btn(type='submit')
+                                        i.fas.fa-trash-alt
+                    else if val.title
+                        tr
+                            td(onclick= val.story_url ? 'window.open(\''+val.story_url+'\')' : 'window.open(\''+val.url+'\')')
+                                b.title= val.title
+                                b.author= ' - ' + val.author + ' - '
+                            td(onclick= val.story_url ? 'window.open(\''+val.story_url+'\')' : 'window.open(\''+val.url+'\')')
+                                b.date= moment(val.created_at).calendar()
+                            td
+                                form(method='POST' action='/articles#list')
+                                    input(name='objectID',value=val.objectID,type='hidden')
+                                    button.icon-btn(type='submit')
+                                        i.fas.fa-trash-alt

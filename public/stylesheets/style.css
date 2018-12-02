@@ -54,3 +54,14 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid slategrey;
   border-radius: 5px;
 }
+
+.icon-btn {
+  background-color: transparent;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background-color: #99999954;
+}

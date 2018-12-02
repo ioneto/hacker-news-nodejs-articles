@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-let app = require('../app');
+let app = require('../src/app');
 let debug = require('debug')('hacker-news-nodejs-articles:server');
 let http = require('http');
 
